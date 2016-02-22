@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="examplecon" default="build">
+    <target name="build" depends="generate-autoloader,phpunit"/>
+
+    <target name="generate-autoloader" description="Generate autoloader code">
+        <exec executable="${basedir}/build/tools/phpab.phar" taskname="phpab">
+            <arg value="--output"/>
+            <arg path="src/autoload.php"/>
+            <arg path="src"/>
+        </exec>
+    </target>
+
+    <target name="phpunit" description="Run unit tests with PHPUnit">
+        <exec executable="${basedir}/build/tools/phpunit.phar" taskname="phpunit">
+            <arg value="--configuration"/>
+            <arg path="${basedir}/build/phpunit.xml"/>
+        </exec>
+    </target>
+</project>
+

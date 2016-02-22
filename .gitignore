@@ -1,0 +1,5 @@
+/.idea
+/src/autoload.php
+/build/coverage
+/build/testdox.html
+
