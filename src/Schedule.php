@@ -15,9 +15,7 @@ class Schedule
      */
     public function add(Talk $talk)
     {
-        if ($this->conflictsWithPreviousSelection($talk)) {
-            throw new ScheduleConflictException;
-        }
+        $this->ensureDoesNotConflict($talk);
 
         $this->talks[] = $talk;
     }
@@ -25,17 +23,15 @@ class Schedule
     /**
      * @param Talk $talk
      *
-     * @return bool
+     * @throws ScheduleConflictException
      */
-    private function conflictsWithPreviousSelection(Talk $talk)
+    private function ensureDoesNotConflict(Talk $talk)
     {
         foreach ($this->talks as $previouslySelectedTalk) {
             if ($talk->conflictsWith($previouslySelectedTalk)) {
-                return true;
+                throw new ScheduleConflictException;
             }
         }
-
-        return false;
     }
 
     /**
