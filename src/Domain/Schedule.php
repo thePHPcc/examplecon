@@ -4,9 +4,30 @@ namespace examplecon;
 class Schedule
 {
     /**
+     * @var ScheduleId
+     */
+    private $id;
+
+    /**
      * @var Talk[]
      */
     private $talks = [];
+
+    /**
+     * @param ScheduleId $id
+     */
+    public function __construct(ScheduleId $id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return ScheduleId
+     */
+    public function id()
+    {
+        return $this->id;
+    }
 
     /**
      * @param Talk $talk

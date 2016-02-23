@@ -8,7 +8,7 @@ class ScheduleTest extends \PHPUnit_Framework_TestCase
      */
     public function testIsInitiallyEmpty()
     {
-        $schedule = new Schedule;
+        $schedule = new Schedule(new ScheduleId(new Uuid));
 
         $this->assertEmpty($schedule->talks());
 
@@ -53,7 +53,7 @@ class ScheduleTest extends \PHPUnit_Framework_TestCase
 
     public function testConflictingTalkCannotBeAddedToSchedule()
     {
-        $schedule = new Schedule;
+        $schedule = new Schedule(new ScheduleId(new Uuid));
 
         $schedule->add($this->createTalkWithConflict());
 
