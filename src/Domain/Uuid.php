@@ -8,9 +8,13 @@ class Uuid
      */
     private $uuid;
 
-    public function __construct()
+    public function __construct($uuid = null)
     {
-        $this->uuid = uniqid('mylittleuuid', true);
+        if ($uuid === null) {
+            $uuid = uniqid('mylittleuuid', true);
+        }
+
+        $this->uuid = $uuid;
     }
 
     /**
